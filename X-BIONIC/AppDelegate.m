@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 SY. All rights reserved.
 //
 
+#import "XBMainViewController.h"
 #import "AppDelegate.h"
 
 @implementation AppDelegate
@@ -14,8 +15,28 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    // 初始化一个主视图控制器
+    XBMainViewController *XBMainVC = [[XBMainViewController alloc] init];
+    // 初始化一个导航控制器实例，把XBMainVC作为指定的根视图控制器
+    UINavigationController *XBMainNC = [[UINavigationController alloc] initWithRootViewController:XBMainVC];
+    // 把导航控制器的实例作为根视图控制器
+    self.window.rootViewController = XBMainNC;
+    // 改变导航栏图标颜色
+    [[UINavigationBar appearance] setTintColor:[UIColor grayColor]];
+    // 设置屏幕的颜色
     self.window.backgroundColor = [UIColor whiteColor];
+    // 让视图可见，并显示在屏幕上
     [self.window makeKeyAndVisible];
+    
+    // 修改字体样式
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.7];
+    shadow.shadowOffset = CGSizeMake(0, 1);
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor whiteColor],NSForegroundColorAttributeName,
+                                                           shadow, NSShadowAttributeName,
+                                                           [UIFont fontWithName:@"HelveticaNeue" size:18], NSFontAttributeName, nil]];
     return YES;
 }
 
