@@ -11,5 +11,6 @@
 @interface XBUserCenterTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *userLabel;
+@property (nonatomic, strong) UIImageView *userImage;
 
 @end

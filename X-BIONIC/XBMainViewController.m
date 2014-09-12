@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 SY. All rights reserved.
 //
 
+#import "XBUserCenterViewController.h"
+#import "SYModel.h"
 #import "XBUserLoginViewController.h"
 #import "XBAcitvityViewController.h"
 #import "XBProductBuyViewController.h"
@@ -158,7 +160,6 @@
         point.x = 1280;
         self.homepageScrollView.contentOffset = point;
     }
-    NSLog(@" = %f", self.homepageScrollView.contentOffset.x);
 }
 
 
@@ -209,10 +210,11 @@
     
     // 设置左按钮图片和动作
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
-                                             initWithImage:[UIImage imageNamed:@"personPicture"]
+                                             initWithImage:[UIImage imageNamed:@"loginBtn"]
                                                      style:UIBarButtonItemStylePlain
                                                     target:self
                                                     action:@selector(clickUserCenter)];
+    
     // 设置右按钮图片和动作
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                               initWithImage:[UIImage imageNamed:@"searchBtnPic"]
@@ -237,9 +239,14 @@
  */
 - (void)clickUserCenter
 {
-    XBUserLoginViewController *userCenterVC = [[XBUserLoginViewController alloc] init];
-    UINavigationController *loginNC = [[UINavigationController alloc] initWithRootViewController:userCenterVC];
-    [self presentViewController:loginNC animated:YES completion:nil];
+    // 进入用户中心
+//    XBUserCenterViewController *userCenterVC = [[XBUserCenterViewController alloc] init];
+//    UINavigationController *userCenterNC = [[UINavigationController alloc] initWithRootViewController:userCenterVC];
+//    [self presentViewController:userCenterNC animated:YES completion:nil];
+    // 返回主页面
+//    XBUserLoginViewController *userCenterVC = [[XBUserLoginViewController alloc] init];
+//    UINavigationController *loginNC = [[UINavigationController alloc] initWithRootViewController:userCenterVC];
+//    [self presentViewController:loginNC animated:YES completion:nil];
 }
 
 /**

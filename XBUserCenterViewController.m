@@ -31,14 +31,29 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self initNavigationBar];
     [self createTableView];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+/**
+ *  导航栏和状态栏
+ */
+- (void)initNavigationBar
+{
+    [self.navigationController setNavigationBarHidden:YES];
+//    // 设置导航栏背景图片
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"topNav"]
+//                                                  forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
+    self.view.backgroundColor = [UIColor blackColor];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 }
 
 /**
@@ -60,7 +75,7 @@
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 9;
 }
 
 /**
@@ -69,12 +84,42 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSArray *array = USERCENTERARRAY;
+    NSArray *imageArray = USERCENTERIMAGE_ARRAY;
     NSString *cellID = @"cell";
     XBUserCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (!cell) {
-        cell = [[XBUserCenterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell = [[XBUserCenterTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                                reuseIdentifier:cellID];
     }
-    cell.textLabel.text = array[indexPath.row];
+    cell.userLabel.text = array[indexPath.row];
+    cell.userImage.image = [UIImage imageNamed:imageArray[indexPath.row]];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+
+/**
+ *  section_header高度
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return USERCENTER_HEIGHT_FOR_SECTION;
+}
+
+/**
+ *  cell高度
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return ((self.view.frame.size.height - USERCENTER_HEIGHT_FOR_SECTION) / 7);
+}
+
+/**
+ *  绘制header
+ */
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+    headerView.backgroundColor = [UIColor redColor];
+    return headerView;
 }
 @end

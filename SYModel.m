@@ -1,4 +1,4 @@
-//
+
 //  SYModel.m
 //  X-BIONIC
 //
@@ -70,8 +70,9 @@ static SYModel *model = nil;
     NSDictionary *userCenterDic = [NSJSONSerialization JSONObjectWithData:received
                                                                 options:NSJSONReadingMutableLeaves
                                                                   error:nil];
-    NSDictionary *dic = userCenterDic[@"data"];
-    NSLog(@"%@", dic[@"userAddress"]);
+//    NSDictionary *dic = userCenterDic[@"data"];
+//    NSLog(@"lllllll = %@", userCenterDic);
+//    return userCenterDic[@"status"];
 }
 
 #pragma mark - X的介绍

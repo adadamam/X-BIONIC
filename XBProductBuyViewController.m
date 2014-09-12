@@ -6,12 +6,15 @@
 //  Copyright (c) 2014年 SY. All rights reserved.
 //
 
+#import "XBProductTableViewCell.h"
+#import "XBUserLoginViewController.h"
+#import "XBUserCenterViewController.h"
 #import "SYdefine.h"
 #import "XBProductBuyViewController.h"
 
 @interface XBProductBuyViewController ()
 {
-    
+    UITableView *_productTableView;
 }
 
 @property (nonatomic, strong) UITableView *productTableView;
@@ -36,6 +39,9 @@
     
     // 初始化导航栏
     [self initNavigationBar];
+    
+    // 创建表格
+    [self initTableView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +74,8 @@
 - (void)clickButton
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+//    XBUserCenterViewController *userCenterVC = [[XBUserCenterViewController alloc] init];
+//    [self.navigationController pushViewController:userCenterVC animated:YES];
 }
 
 /**
@@ -75,7 +83,14 @@
  */
 - (void)initTableView
 {
-    
+    _productTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,
+                                                                      0,
+                                                                      self.view.frame.size.width,
+                                                                      self.view.frame.size.height)
+                                                     style:UITableViewStylePlain];
+    _productTableView.delegate = self;
+    _productTableView.dataSource = self;
+    [self.view addSubview:_productTableView];
 }
 
 /**
@@ -83,7 +98,15 @@
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
+}
+
+/**
+ *  每行有多高
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.view.frame.size.height / 2;
 }
 
 /**
@@ -91,6 +114,16 @@
  */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    NSArray *imageArray = @[@"upBackground", @"downBackground"];
+    NSString *cellID = @"cell";
+    XBProductTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    if (!cell) {
+        cell = [[XBProductTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    }
+    cell.productImageView.image = [UIImage imageNamed:@"downBackground"];
+    cell.productImageView.image = [UIImage imageNamed:imageArray[indexPath.row]];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    return cell;
+    
 }
 @end

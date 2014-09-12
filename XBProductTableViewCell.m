@@ -19,10 +19,9 @@
         // 表格图片视图
         self.productImageView = [[UIImageView alloc]
                                  initWithFrame:CGRectMake(0,
-                                                          0,
-                                                          self.window.frame.size.width,
-                                                          (self.window.frame.size.height - 64) / 2)];
-        
+                                                          -1,
+                                                          320,
+                                                          254)];
         [self.contentView addSubview:self.productImageView];
     }
     return self;

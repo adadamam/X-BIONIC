@@ -21,7 +21,7 @@
 #define kNAVIGATION_HEIGHT 64
 
 // 进入首页加载哪页(320-介绍，640-活动，960-购买，1280-达人故事)
-#define kFIRST_PAGE 640
+#define kFIRST_PAGE 960
 
 // 导航栏标题位置
 #define LOCATION_OF_NAVIGATIONTITLE CGRectMake(0.0f, 0.0f, 100.0f, 40.0f)
@@ -65,6 +65,10 @@
 /**
  *  用户中心
  */
-#define USERCENTERARRAY @[@"您的订购", @"账户设置", @"达人申请", @"部落社区", @"购物车", @"订阅信息", @"分享设置"];
-
+#define USERCENTERARRAY @[@"您的订购", @"账户设置", @"达人申请", @"部落社区", @"购物车",\
+                          @"订阅信息", @"分享设置", @"密码设置", @"关于我们"]
+#define USERCENTERIMAGE_ARRAY @[@"order", @"accountSetting", @"expert", @"community", \
+                                @"shoppingCart", @"noticification", @"share", @"passwordSetting", @"AboutUs"]
+#define USERCENTER_HEIGHT_FOR_SECTION 120.0f
+#define HEIGHT_FOR_VIEW 504
 #endif

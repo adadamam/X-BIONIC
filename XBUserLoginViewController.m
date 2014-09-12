@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 SY. All rights reserved.
 //
 
+#import "XBMainViewController.h"
 #import "XBUserCenterViewController.h"
 #import "SYModel.h"
 #import "SYdefine.h"
@@ -117,8 +118,17 @@
 - (void)clickLoginButton
 {
     [self postUrl];
-    XBUserCenterViewController *userCenterVC = [[XBUserCenterViewController alloc] init];
-    [self.navigationController pushViewController:userCenterVC animated:YES];
+    XBMainViewController *mainVC = [[XBMainViewController alloc] init];
+    [self.navigationController pushViewController:mainVC animated:YES];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+//                                             initWithImage:[UIImage imageNamed:@"listButton"]];
+//                                             style:UIBarButtonItemStylePlain
+//                                             target:self
+//                                             action:@selector(clickListButton)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"listButton"] style:UIBarButtonItemStylePlain target:nil action:nil];
+//    XBUserCenterViewController *userCenterVC = [[XBUserCenterViewController alloc] init];
+//    [self.navigationController pushViewController:userCenterVC animated:YES];
+
 }
 
 /**
